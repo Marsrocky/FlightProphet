@@ -1,3 +1,5 @@
+# Dictionary of IATA Airport Codes of main cities of China
+
 CityAirport = {
 	'Jinan': 'tna',
 	'Guangzhou': 'can',
