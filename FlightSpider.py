@@ -1,6 +1,6 @@
 import re
 import urllib, urllib2
-import datetime
+import datetime, time
 from CityAirport import *
 
 def searchUrl(fromCity, toCity, startdate):
@@ -38,3 +38,37 @@ def searchInfo(searchUrl, num):
 			info.append([company[i], punctuality[i], price[i]])
 	return info
 
+def dataRecord(flightDate, recordNum, fromCity, toCity):
+	'''
+	Record the information each day until the flight
+	Args:  flight date, record number, fromCity, toCity
+	Return: None
+	'''
+	today = time.strftime('%Y-%m-%d')
+	y, m, d = today.split('-')
+	fy, fm, fd = flightDate.split('-')
+	while True:
+		# Search
+		url = searchUrl(fromCity, toCity, flightDate)
+		info = searchInfo(url, recordNum)
+
+		# Save to file
+		filename = flightDate + '_' + fromCity + '_' + toCity + '.txt'
+		output = open(filename, 'a')
+		temp = 'SearchDate: ' + today + '\n'
+		for item in info:
+			temp += item[0] + '\t' + item[1] + '\t' + item[2] + '\n'
+		temp += '\n'
+		output.writelines(temp)
+		output.close()
+		print today , ': Information Record!'
+
+		# Time to stop. Planes are taking off!
+		y, m, d = today.split('-')
+		if y == fy and m == fm and d == fd:
+			break
+
+		# Sleep until tomorrow
+		while today.split('-')[2] == d:
+			time.sleep(600)
+			today = time.strftime('%Y-%m-%d')
