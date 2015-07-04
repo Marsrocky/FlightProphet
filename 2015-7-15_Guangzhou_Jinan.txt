@@ -1,0 +1,7 @@
+SearchDate: 2015-07-05
+China Eastern Airlines	41%	1,091	16:40	2h50m	19:30
+Shenzhen Airlines	55%	1,139	08:55	2h40m	11:35
+China Southern Airlines	86%	1,198	08:35	2h35m	11:10
+China Southern Airlines	53%	1,198	17:35	2h45m	20:20
+Shenzhen Airlines	73%	1,229	14:50	2h50m	17:40
+
