@@ -31,3 +31,9 @@ def loadData(path, itemNum = 5):
 			FormatData[searchDate[i]]['ArriveTime'] = speData[5].strip()
 
 	return FormatData
+
+# Time-series model
+# P(t) = Sum(i=1, k)f(i)P(t-k+1)
+# where f(i) is an increasing function
+## f can be defined by different normalization of departure time
+## f can be defined by f(i) = i / Sum(56, k=1)(k)
